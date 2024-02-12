@@ -21,21 +21,21 @@
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff; 
-    transition: transform 1s ease-in-out; /* Define transition properties */
-    transform-style: preserve-3d; /* Ensure smooth transitions */
+    transition: transform 1s ease-in-out; 
+    transform-style: preserve-3d; 
     position: relative;
   }
 
     .submitted {
-    transform: rotateY(360deg); /* Rotate the form when submitted */
+    transform: rotateY(360deg); 
   }
      .thank-you-message {
-    transform: rotateY(360deg); /* Set initial rotation for the thank-you message */
-    display: block; /* Show the thank-you message */
+    transform: rotateY(360deg); 
+    display: block; 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the message */
+    transform: translate(-50%, -50%); 
     text-align: center;
     width: 100%;
   }
@@ -69,7 +69,7 @@
     }
 
     .submit-btn:hover {
-      background-color: #009acd; /* Slightly darker shade on hover */
+      background-color: #009acd;
     }
   </style>
 </head>
@@ -130,7 +130,7 @@
                   value={formData.firstName}
                   onChange={handleChange}
                   className="input-field"
-                  required  // Added required attribute
+                  required  
                 />
               </label>
               <br />
@@ -142,7 +142,7 @@
                   value={formData.lastName}
                   onChange={handleChange}
                   className="input-field"
-                  required  // Added required attribute
+                  required 
                 />
               </label>
               <br />
@@ -154,7 +154,7 @@
                   value={formData.email}
                   onChange={handleChange}
                   className="input-field"
-                  required  // Added required attribute
+                  required  
                 />
               </label>
               <br />
@@ -166,7 +166,7 @@
                   value={formData.password}
                   onChange={handleChange}
                   className="input-field"
-                  required  // Added required attribute
+                  required 
                 />
               </label>
               <br />
