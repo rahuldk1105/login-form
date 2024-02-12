@@ -23,21 +23,23 @@
     background-color: #fff; 
     transition: transform 1s ease-in-out; /* Define transition properties */
     transform-style: preserve-3d; /* Ensure smooth transitions */
+    position: relative;
   }
 
     .submitted {
     transform: rotateY(180deg); /* Rotate the form when submitted */
   }
-    .thank-you-message {
+     .thank-you-message {
     transform: rotateY(0deg); /* Set initial rotation for the thank-you message */
-    display: none; /* Hide the thank-you message initially */
+    display: block; /* Show the thank-you message */
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    backface-visibility: hidden; /* Hide backface during rotation for a smoother transition */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the message */
+    text-align: center;
+    width: 100%;
   }
+
 
    h2 {
     text-align: center;
