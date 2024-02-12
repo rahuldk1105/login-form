@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Registration Form</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000; 
+    }
+
+    .registration-container {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; 
+    transition: transform 1s ease-in-out; /* Define transition properties */
+    transform-style: preserve-3d; /* Ensure smooth transitions */
+  }
+
+    .submitted {
+    transform: rotateY(180deg); /* Rotate the form when submitted */
+  }
+    .thank-you-message {
+    transform: rotateY(0deg); /* Set initial rotation for the thank-you message */
+    display: none; /* Hide the thank-you message initially */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden; /* Hide backface during rotation for a smoother transition */
+  }
+
+   h2 {
+    text-align: center;
+    color: #333; 
+  }
+
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc; 
+      border-radius: 4px;
+    }
+
+    .submit-btn {
+      background-color: #00f7ff; 
+      color: black;
+      padding: 10px 15px;
+      border: 1;
+      border-radius: 100px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background-color: #009acd; /* Slightly darker shade on hover */
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+<script type="text/babel">
+  // Paste the React component here
+  const { useState } = React;
+
+  const RegistrationForm = () => {
+    const [formData, setFormData] = useState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    });
+
+    const [submissionStatus, setSubmissionStatus] = useState(null);
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // Add your form submission logic here
+      console.log('Form submitted:', formData);
+
+      // Update the submission status
+      setSubmissionStatus('success');
+    };
+
+    return (
+      <div className={`registration-container ${submissionStatus === 'success' ? 'submitted' : ''}`}>
+        {submissionStatus === 'success' ? (
+          <div className="thank-you-message">
+            <p>Thank you for registering!</p>
+          </div>
+        ) : (
+          <div>
+            <h2>Registration Form</h2>
+            <form onSubmit={handleSubmit}>
+              <label>
+                First Name:
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className="input-field"
+                  required  // Added required attribute
+                />
+              </label>
+              <br />
+              <label>
+                Last Name:
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="input-field"
+                  required  // Added required attribute
+                />
+              </label>
+              <br />
+              <label>
+                Email:
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="input-field"
+                  required  // Added required attribute
+                />
+              </label>
+              <br />
+              <label>
+                Password:
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="input-field"
+                  required  // Added required attribute
+                />
+              </label>
+              <br />
+              <button type="submit" className="submit-btn">
+                Register
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  ReactDOM.render(<RegistrationForm />, document.getElementById('root'));
+</script>
+
+</body>
+</html>
